@@ -1,0 +1,30 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "node": true,
+        "mocha":true
+    },
+    "extends": ["airbnb-base", "prettier"],
+    "plugins": ["prettier"],
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "rules": {
+        "prettier/prettier": "error",
+        "no-unused-vars":"warn",
+        "no-console":"off",
+        "func-names":"off",
+        "no-process-exit":"off",
+        "class-methods-use-this":"off"
+    },
+    "overrides": [{
+        "files": "**/*.test.js",
+        "rules": {
+            "node/no-unpublished-require": 0,
+            "node/no-missing-require": 0
+        }
+    }]
+}

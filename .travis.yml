@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+ - "stable"
+install: yarn
+script: yarn test
+cache:
+  directories:
+    - "node_modules"
+    - "test"
+# safelist
+branches:
+  only:
+  - development
+after_success: yarn coverage
