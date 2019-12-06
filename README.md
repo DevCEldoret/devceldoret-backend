@@ -11,9 +11,13 @@ git clone https://https://github.com/DevCEldoret/devceldoret-backend.git
 
 3. `cd` into the newly created directory then run 
 ```shell 
-npm install
+yarn 
 ```
 4. Finally, run:
 ```shell 
-npm start
+yarn start
+```
+5. For testing, run:
+```shell 
+yarn test
 ```
