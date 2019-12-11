@@ -9,12 +9,22 @@ The following is a set of guidelines for contributing to DevC and its repositori
 [Code of Conduct](#code-of-conduct)
 
 [How Can I Contribute?](#how-can-i-contribute)
-* [Reporting Bugs](#reporting-bugs)
-* [Suggesting Enhancements](#suggesting-enhancements)
-* [Your First Code Contribution](#your-first-code-contribution)
+* [Reporting Bugs](#Issues)
+* [Suggesting Enhancements](#Enhancements)
 * [Pull Requests](#pull-requests)
 
 [Styleguides](#styleguides)
   * [Git Commit Messages](#git-commit-messages)
   * [Tests Styleguide](#tests-styleguide)
   * [Documentation Styleguide](#documentation-styleguide)
+
+
+## Issues
+
+Check if the issue has been addressed or is in progress and if not , only then do you create a new issue. Remember to give it the appropriate [label](https://github.com/DevCEldoret/devceldoret-backend/labels)
+
+## Enhancements
+Describe the enhancement in mind and what you would expect to have resulted from this process. Submit the enhancement with the `enhancement` tag.
+
+## Pull requests
+Reference the issue or enhancement being referenced in the pull request and submit the pull request to the `development` branch.
