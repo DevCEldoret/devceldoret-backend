@@ -39,7 +39,7 @@ Kindly follow instructions on these links to set up the API Blueprint on your ed
 1. VS Code - https://github.com/honzababarik/vscode-api-blueprint-preview
 2. Atom - https://atom.io/packages/api-blueprint-preview
 3. Sublime Text - https://github.com/apiaryio/api-blueprint-sublime-plugin.
-**Only** the VS Code and Atom extensions have been tested so far, and they work. If you encounter any issues setting up your Blueprint Preview, we here to help. On successful installation, you can use the **commands** for your particular extension and you should end up with something like the image below (for those on VS Code).
+**Only** the VS Code and Atom extensions have been tested so far, and they work. If you encounter any issues setting up your Blueprint Preview, we here to help. On successful installation, open up the .apib file, use the **commands** for your particular extension and you should end up with something like the image below (for those on VS Code).
 
 ![devc-api](https://user-images.githubusercontent.com/33445976/70603307-4b2fe400-1c07-11ea-98de-7cc0af9346bb.png)
 
