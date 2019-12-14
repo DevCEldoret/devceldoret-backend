@@ -25,4 +25,4 @@ yarn test
 ```
 ## Contributions
 
-Be sure to go through the [contribution guidelines](https://github.com/DevCEldoret/devceldoret-backend/blob/development/CONTRIBUTIONS.md)
+Be sure to go through the [contribution guidelines](https://github.com/DevCEldoret/devceldoret-backend/blob/development/CONTRIBUTIONS.md).

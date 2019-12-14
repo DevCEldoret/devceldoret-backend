@@ -12,11 +12,12 @@ The following is a set of guidelines for contributing to DevC and its repositori
 * [Reporting Bugs](#Issues)
 * [Suggesting Enhancements](#Enhancements)
 * [Pull Requests](#pull-requests)
+* [Workflow](#workflow)
 
 [Styleguides](#styleguides)
   * [Git Commit Messages](#git-commit-messages)
   * [Tests Styleguide](#tests-styleguide)
-  * [Documentation Styleguide](#documentation-styleguide)
+  * [API Documentation Styleguide](#api-documentation-style-guide)
 
 
 ## Issues
@@ -28,3 +29,8 @@ Describe the enhancement in mind and what you would expect to have resulted from
 
 ## Pull requests
 Reference the issue or enhancement being referenced in the pull request and submit the pull request to the `development` branch.
+
+## Workflow
+We use the git workflow on our projects. If you are unfamiliar with the workflow, here is an awesome primer by [Atlassian](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow). Basically, we have a `master` branch that serves for official release cycles, a `develop` branch that sums up features for the next release. Each `feature/chore/bug-fix` needs to be in its own branch originating from the  `develop` branch. When the develop branch has acquired enough features for a `release`, a temporary branch is created (intuitively named **release**) to mark the next release cycle. At this point, **No new** features will be allowed, just bug fixes or documentations. When we are confident enough and after extensive testing, the new branch is merged to the `master` with a version number, it is merged into the `develop` branch to get the fixes or modifications made on the `release` branch. After all that, the branch is deleted and we go on and start working on features for the next release (from the `develop` branch).
+
+## API Documentation Style Guide
