@@ -1,36 +1,43 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const chai_1 = require("chai");
-const supertest_1 = __importDefault(require("supertest"));
-const server_1 = __importDefault(require("../server"));
-describe("DevC", () => {
-    // gets json response
-    describe("GET events", () => {
-        it("responds with json", done => {
-            supertest_1.default(server_1.default)
-                .get("/api/v1/events")
-                .send({ title: 'Community Challenge',
-                eventLocation: 'Sirikwa Hotel',
-                startTime: '2019-08-15 21:05:15.723336+07',
-                endTime: '2019-08-15 21:05:15.723336+07',
-                media: "https://photos.app.goo.gl/323EcdkmFTzrfLd96",
-                speakers: "Marvin Kweyu" })
-                .then(res => {
-                const { data } = res.body;
-                chai_1.expect(res.status).to.equal(200);
-                chai_1.expect(status).to.equal("success");
-                chai_1.expect(data).to.have.property('title');
-                chai_1.expect(data).to.have.property('startTime');
-                chai_1.expect(data).to.have.property('endTime');
-                chai_1.expect(data).to.have.property('media');
-                chai_1.expect(data).to.have.property('speakers');
-                done();
-            })
-                .catch(error => done(error));
-        });
-    });
-});
+// import { expect } from "chai";
+// import request from "supertest";
+// const event = require("../DB/db.js");
+// const Database = require ("../DB/index");
+// import app from "../server";
+// describe("DevC", () => {
+//   // gets json response
+//   describe("GET events", () => {
+//     let id;
+//     let title;
+//     before(done => {
+//       Database.query(
+//         // Insert default Event into table events
+//         "INSERT INTO events (id, title) VALUES ($1, $2) RETURNING id",
+//         [event.getEvents.id, event.getEvents.title]
+//       ).then((value: { id: number,title:string; }) => {
+//         id = value.id;
+//         title = value.title;
+//         done();
+//       });
+//     });
+//     it("gets event information with the id of 1", done => {
+//       request(app)
+//         .get("/api/v1/events")
+//         .set("Content-Type", "application/json")
+//         .then(res => {
+//           const {
+//             body: {
+//               status,
+//               data: { value }
+//             }
+//           } = res;
+//           expect(res.status).to.equal(200);
+//           expect(status).to.equal("success");
+//           expect(value).to.have.property('id');
+//           expect(value).to.have.property('title');
+//           done();
+//         })
+//         .catch(error => done(error));
+//     });
+//   });
+// });
 //# sourceMappingURL=events.test.js.map
