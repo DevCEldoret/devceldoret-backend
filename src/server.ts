@@ -1,7 +1,8 @@
-import "@babel/polyfill";
+require('custom-env').env()
 import express from "express";
 import bodyParser from "body-parser";
-import helper from "./Utils/helper";
+import EventRoute from "./routes/eventRoute";
+const helper = require('./Utils/helper')
 
 const app = express();
 
@@ -13,6 +14,10 @@ app.get("/", (request, response) => {
   response.json({ message: "Server starts successfully!" });
 });
 
+// routes
+app.use("/api/v1", EventRoute);
+
+// CORS
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Headers", "Authorization, Content-type");
@@ -23,9 +28,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.set("port", helper.PORT);
-app.listen(helper.PORT, () => {
-  console.log("app is running on port ", helper.PORT);
+app.set("port", process.env.PORT || "3000");
+app.listen(process.env.PORT || "3000", () => {
+  console.log("app is running on port ", process.env.PORT || "3000");
 });
 
 export default app;

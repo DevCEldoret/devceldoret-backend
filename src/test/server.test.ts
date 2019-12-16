@@ -4,7 +4,7 @@ import request from "supertest";
 
 import app from "../server";
 
-describe("Teamwork", () => {
+describe("DevC", () => {
   // gets json response
   describe("GET /", () => {
     it("responds with json", done => {
