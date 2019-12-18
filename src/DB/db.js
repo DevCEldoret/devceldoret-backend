@@ -1,6 +1,7 @@
 exports.getEvents = {
   id: 1,
   title: 'Community Challenge',
+  description:'Join us as we celebrate a year of growth and collaboration',
   location: {
     "name": "Sirikwa Hotel",
     "street": "Oloo Street",
