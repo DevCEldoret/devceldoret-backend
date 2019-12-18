@@ -14,7 +14,7 @@ app.get("/", (request, response) => {
 });
 
 // routes
-app.use("/api/v1/event", EventRoute);
+app.use("/event", EventRoute);
 
 // CORS
 app.use((req, res, next) => {
