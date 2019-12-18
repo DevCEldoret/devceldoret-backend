@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:latest 
+    
+    working_directory: ~/repo    
+    steps:
+      - checkout 
+
+      - run: 
+            name: install-dependencies
+            command: npm install
+ 
+      - run:
+            name: run-tests
+            command: npm test
