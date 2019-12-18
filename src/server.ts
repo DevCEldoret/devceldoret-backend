@@ -1,8 +1,7 @@
 require('custom-env').env()
 import express from "express";
 import bodyParser from "body-parser";
-import EventRoute from "./routes/eventRoute";
-const helper = require('./Utils/helper')
+import EventRoute from "./routes/event-route";
 
 const app = express();
 
@@ -15,7 +14,7 @@ app.get("/", (request, response) => {
 });
 
 // routes
-app.use("/api/v1", EventRoute);
+app.use("/api/v1/event", EventRoute);
 
 // CORS
 app.use((req, res, next) => {

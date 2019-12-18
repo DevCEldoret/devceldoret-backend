@@ -4,7 +4,7 @@
   "description": "This repo serves as the backend for the Developer Circles Eldoret Community website.",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon --exec \"ts-node\" ./src/server.ts",
+    "start": "nodemon --exec \"ts-node\" ./src/server.ts",
     "test": "nyc mocha -r ts-node/register --exit ./src/test/*.test.ts",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "build": "tsc --build tsconfig.json"
@@ -21,19 +21,15 @@
   },
   "homepage": "",
   "dependencies": {
-    "@types/pg": "^7.11.2",
-    "@types/supertest": "^2.0.8",
     "body-parser": "^1.19.0",
-    "chai": "^4.2.0",
     "cors": "^2.8.4",
-    "custom-env": "^1.0.2",
     "dotenv-config": "^0.1.1",
-    "express": "^4.17.1",
-    "nodemon": "^1.19.4",
-    "nyc": "^14.1.1",
-    "pg": "^7.14.0"
+    "express": "^4.17.1"
+    
   },
   "devDependencies": {
+    "@types/pg": "^7.11.2",
+    "@types/supertest": "^2.0.8",
     "@types/chai": "^4.2.7",
     "@types/express": "^4.17.2",
     "@types/mocha": "^5.2.7",
@@ -41,20 +37,21 @@
     "@typescript-eslint/eslint-plugin": "^2.11.0",
     "@typescript-eslint/parser": "^2.11.0",
     "coveralls": "^3.0.7",
+    "chai": "^4.2.0",
+    "custom-env": "^1.0.2",
     "eslint": "^6.6.0",
-    "eslint-config-airbnb": "^18.0.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-node": "^10.0.0",
-    "eslint-plugin-react": "^7.17.0",
     "mocha": "^6.2.2",
     "mocha-lcov-reporter": "^1.3.0",
-    "nyc": "^14.1.1",
     "prettier": "^1.18.2",
     "supertest": "^4.0.2",
     "ts-node": "^8.5.4",
-    "tslint": "^5.20.1",
-    "typescript": "^3.7.3"
+    "typescript": "^3.7.3",
+    "nyc": "^14.1.1",
+    "pg": "^7.14.0",
+    "nodemon": "^1.19.4"
   }
 }

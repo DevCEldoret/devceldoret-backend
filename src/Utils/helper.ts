@@ -9,6 +9,5 @@ const {
 } = process.env;
 
 if (process.env.NODE_ENV === "development")
-console.log(process.env.APP_ENV)
 
 module.exports = new pg.Pool();
