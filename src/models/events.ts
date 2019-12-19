@@ -1,9 +1,9 @@
 import Database from "../db/index";
 import ErrorHandler from "../Utils/errorHandler";
 
-class GetEvent {
-  static async getEvents( id:number, title:string, eventLocation:string, startTime:any, endTime:any, media:string, speakers:string, eventInfo:string ) {
-    const values = [id, title, eventLocation, startTime, endTime, media, speakers , eventInfo];
+class EventModel {
+  static async getEvents( id:number, title:string, location:Array<string>,description:string, startTime:any, endTime:any, mediaLink:string, speakers:Array<string> ) {
+    const values = [id, title, location, description, startTime, endTime, mediaLink, speakers ];
     const response = await Database.query('SELECT * FROM events WHERE id = $1', values).catch(
       error => {
         throw new ErrorHandler(error.message, 400);
@@ -16,4 +16,4 @@ class GetEvent {
   }
 }
 
-export default GetEvent;
+export default EventModel;
