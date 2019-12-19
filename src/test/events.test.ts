@@ -1,14 +1,14 @@
-// import { expect } from "chai";
+import { expect } from "chai";
 
-// import request from "supertest";
+import request from "supertest";
 
-// const event = require("../DB/db.js");
-// const Database = require ("../DB/index");
+const getEvents = require("../DB/db.js");
+const Database = require ("../DB/index");
 
-// import app from "../server";
+import app from "../server";
 
-// describe("DevC", () => {
-//   // gets json response
+describe("DevC", () => {
+  // gets json response
 //   describe("GET events", () => {
 //     let id;
 //     let title;
@@ -43,4 +43,4 @@
 //         .catch(error => done(error));
 //     });
 //   });
-// });
+});
