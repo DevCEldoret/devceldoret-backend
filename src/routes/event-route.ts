@@ -1,6 +1,6 @@
 import { Router } from "express";
 //import { Pool } from 'pg';
-import getEvents from "../controllers/event-controller";
+import  EventController  from "../controllers/event-controller";
 
 const router = Router();
 // Added for testing purposes
@@ -17,6 +17,6 @@ const router = Router();
 //   });
 // };
 
-router.get("/", getEvents);
+router.get("/", EventController.getEvents);
 
 export default router;
