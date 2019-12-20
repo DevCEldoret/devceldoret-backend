@@ -2,7 +2,13 @@
     "compilerOptions": {
       "module": "commonjs",
       "esModuleInterop": true,
+<<<<<<< HEAD
       "target": "es6",
+=======
+      "target": "ES2017",
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+>>>>>>> 1c1d96b77d8fb7af71c4f9fb1671dee03e14d8e1
       "noImplicitAny": true,
       "moduleResolution": "node",
       "sourceMap": true,
@@ -12,5 +18,10 @@
         "*": ["node_modules/*"]
       }
     },
+<<<<<<< HEAD
     "include": ["src/**/*"]
+=======
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
+>>>>>>> 1c1d96b77d8fb7af71c4f9fb1671dee03e14d8e1
   }
