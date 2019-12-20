@@ -1,4 +1,3 @@
-require('custom-env').env()
 import express from "express";
 import bodyParser from "body-parser";
 import EventRoute from "./routes/event-route";

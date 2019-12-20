@@ -2,7 +2,9 @@
     "compilerOptions": {
       "module": "commonjs",
       "esModuleInterop": true,
-      "target": "es6",
+      "target": "ES2017",
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
       "noImplicitAny": true,
       "moduleResolution": "node",
       "sourceMap": true,
@@ -12,5 +14,6 @@
         "*": ["node_modules/*"]
       }
     },
-    "include": ["src/**/*"]
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
   }

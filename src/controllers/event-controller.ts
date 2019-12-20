@@ -1,4 +1,4 @@
-import EventModel from "../models/events";
+import EventModel from "../../src/database/models/events";
 
 class EventController {
   static async getEvents(_req: any, res: any, next: any) {
