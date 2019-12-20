@@ -27,7 +27,7 @@
     "coveralls": "^3.0.7",
     "dotenv-config": "^0.1.1",
     "express": "^4.17.1",
-    "nodemon": "^1.19.4",
+    "nodemon": "^2.0.2",
     "nyc": "^14.1.1"
   },
   "devDependencies": {
