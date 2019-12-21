@@ -2,58 +2,51 @@ import Sequelize, { DataTypes } from "sequelize";
 
 const sequelize = require ("../config/config");
 
-class Event extends Sequelize.Model {}
-
-Event.init(
+const EventORM = sequelize.define('event', 
   {
     id: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
     location_id: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     title: {
-      type: Sequelize.TEXT,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     description: {
-      type: Sequelize.TEXT,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     start_date_time: {
-      type: Sequelize.DATE,
+      type: DataTypes.DATE,
       allowNull: false,
     },
     end_date_time: {
-      type: Sequelize.DATE,
+      type: DataTypes.DATE,
       allowNull: false,
     },
     total_attendees: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     total_female_attendees: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     media_link: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     rsvp_link: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false
     }
-  },
-  {
-    sequelize,
-    modelName: 'event',
-  },
+  },{}
 );
-module.exports = {
-  Event:event(sequelize, Sequelize.DataTypes),
+module.exports = { EventORM : new EventORM(sequelize, DataTypes),
 }

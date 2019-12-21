@@ -1,10 +1,15 @@
-const Event = require ("../database/models/event");
+import Sequelize, { DataTypes } from "sequelize";
+const EventORM = require("../database/models/event");
 
-
+console.log(EventORM)
 class EventController{
   static async getEvents(_req:any, res:any, next:any){
     try {
-      const events = await Event.findAll();
+      const events = await EventORM.findAll({
+        where: {
+          id: 1
+        }
+      });
       res.json({
         status: 'success',
         data: events,
@@ -16,4 +21,4 @@ class EventController{
 };
 
 
-export default EventController;
+module.exports = EventController;

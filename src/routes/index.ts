@@ -1,9 +1,10 @@
 import express from "express";
 
-import eventsRouter from "./event";
+const eventsRouter = require("./event");
 
 const router = express.Router();
 
 router.use('/events', eventsRouter);
 
-export default router;
+
+module.exports = router;
