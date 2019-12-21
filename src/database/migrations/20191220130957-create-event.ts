@@ -1,14 +1,12 @@
-'use strict';
-module.exports = {
-  up: (queryInterface, Sequelize) => {
+import Sequelize, { QueryInterface } from 'sequelize';
+
+export default {
+  up: (queryInterface: QueryInterface/* , Sequelize */) => {
     return queryInterface.createTable('Events', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      id: {
         type: Sequelize.INTEGER
       },
       location_id: {
@@ -48,7 +46,7 @@ module.exports = {
       }
     });
   },
-  down: (queryInterface, Sequelize) => {
+  down: (queryInterface: QueryInterface/* , Sequelize */) => {
     return queryInterface.dropTable('Events');
   }
 };

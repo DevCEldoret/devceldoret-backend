@@ -1,24 +1,22 @@
 import { expect } from "chai";
 
 import request from "supertest";
-
-const getEvents = require("../DB/db.js");
-const Database = require ("../DB/index");
-
 import app from "../server";
 
-const url = '/api/v1/';
+const apiEndpoint = '/api/v1/events';
 
-describe("DevC", () => {
-  describe('User can view all events', () => {
-    it('GET /event', (done) => {
+describe("DevC /api/v1/events", () => {
+  describe('User can view all events', function() {
+    this.timeout(5000);
+
+    it('GET /', (done) => {
         request(app)
-        .get('/api/v1/event')
+        .get(apiEndpoint)
         .set('Accept', 'application/json')
         .expect("Content-Type", /json/)
+        .expect(500)
         .then((response) => {
-          const { data,status } = response.body;
-          expect(response.status).to.equal(200);
+          console.log('Body', response.body);
           //expect(data.id).to.be.a("number");
           // expect(data.title).to.be.a("string");
           // expect(data.description).to.be.a("string");
@@ -27,9 +25,9 @@ describe("DevC", () => {
           // expect(data.endTime).to.be.a("string");
           // expect(data.mediaLink).to.be.a("string");
           // expect(data.speakers).to.be.an("array");
-          done();
+          // done();
         })
-        .catch((error: any) => done(error));
+        .catch(done);
     });
   });
 });

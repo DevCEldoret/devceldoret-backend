@@ -1,6 +1,7 @@
 import Sequelize from "sequelize";
+import Location from "./location";
 
-const sequelize = require ("../config/config");
+import sequelize from '../config';
 
 class Event extends Sequelize.Model {}
 
@@ -10,12 +11,13 @@ Event.init(
       type: Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
     },
-    location_id: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
-    },
+    // We'll be added by tha association
+    // location_id: {
+    //   type: Sequelize.INTEGER,
+    //   allowNull: false,
+    // },
     title: {
       type: Sequelize.TEXT,
       allowNull: false,
@@ -47,12 +49,14 @@ Event.init(
     rsvp_link: {
       type: Sequelize.STRING,
       allowNull: false
-    }
+    },
   },
   {
     sequelize,
     modelName: 'event',
   },
 );
+
+Event.belongsTo(Location);
 
 export default Event;
