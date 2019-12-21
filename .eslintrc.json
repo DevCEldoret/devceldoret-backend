@@ -6,7 +6,7 @@
         "node": true,
         "mocha":true
     },
-    "extends": ["prettier", "plugin:node/recommended"],
+    "extends": ["prettier", "plugin:node/recommended", "airbnb-base"],
     "plugins": ["prettier"],
     "parserOptions": {
         "ecmaVersion": 2018,
