@@ -1,12 +1,55 @@
-import Database from "../db/index";
+import {Entity, Column, PrimaryGeneratedColumn, ManyToOne, ManyToMany, JoinTable, Index} from "typeorm";
+import Locations from "./locations";
+import Activities from "./activities";
+import Perks from "./perks";
+import Speakers from "./speakers";
 
-class EventModel {
-  static async getEvents() {
-    const response = await Database.query('SELECT * FROM events ORDER BY id ASC', '',true).catch((error) => {
-      throw new Error(error.message);
-    });
-    return response;
-  }
+@Entity()
+export default class events {
+ 
+    @PrimaryGeneratedColumn()
+    id: number;
+ 
+    @Column()
+    name: string;
+ 
+    @Column({nullable: true})
+    description: string;
+ 
+    @ManyToOne(type => Locations, location => location.id, { cascade: ['insert', 'update'] })
+    location: number;
+
+    @Index()
+    @Column({type: 'timestamp'})
+    start_datetime: Date
+
+    @Index()
+    @Column({type: 'timestamp'})
+    end_datetime: Date
+
+    @Column({nullable: true})
+    attendees: number
+
+    @Column({nullable: true})
+    female_attendees: number
+
+    @Column({nullable: true})
+    media_link: string
+
+    @Column({nullable: true})
+    rsvp_link: string
+
+    @ManyToMany(type => Activities,{nullable:true})
+    @JoinTable()
+    activities: Activities[]
+
+    @ManyToMany(type => Perks,{nullable: true})
+    @JoinTable()
+    perks: Perks[]
+
+    @ManyToMany(type => Speakers,{nullable: true})
+    @JoinTable()
+    speakers: Speakers[]
+
+
 }
-
-export default EventModel;
