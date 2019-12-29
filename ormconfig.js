@@ -1,7 +1,6 @@
 const path = __dirname+ "/src/config/.env";
-console.log(path);
-const config = require('dotenv-safe')
-.config({path: path}).required;
+const config = require('dotenv-safe').config({path}).required;
+
 
 module.exports = {
     type: config.type,
@@ -21,5 +20,6 @@ module.exports = {
     migrations: ["migrations/*.js"],
     cli: {
         migrationsDir: "migrations"
-    }
+    },
+    
 }

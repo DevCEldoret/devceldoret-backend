@@ -1,4 +1,4 @@
-import {Entity, Column, PrimaryGeneratedColumn, ManyToOne, ManyToMany, JoinTable, Index} from "typeorm";
+import {Entity, Column, PrimaryGeneratedColumn, ManyToOne, ManyToMany, JoinTable, Index, JoinColumn} from "typeorm";
 import Locations from "./locations";
 import Activities from "./activities";
 import Perks from "./perks";
@@ -16,7 +16,7 @@ export default class events {
     @Column({nullable: true})
     description: string;
  
-    @ManyToOne(type => Locations, location => location.id, { cascade: ['insert', 'update'] })
+    @ManyToOne(type => Locations, location => location.id, { cascade: true, eager: true })
     location: number;
 
     @Index()
@@ -28,28 +28,28 @@ export default class events {
     end_datetime: Date
 
     @Column({nullable: true})
-    attendees: number
+    attendees?: number
 
     @Column({nullable: true})
-    female_attendees: number
+    female_attendees?: number
 
     @Column({nullable: true})
-    media_link: string
+    media_link?: string
 
     @Column({nullable: true})
     rsvp_link: string
 
-    @ManyToMany(type => Activities,{nullable:true})
+    @ManyToMany(type => Activities,{nullable:true, cascade: true})
     @JoinTable()
-    activities: Activities[]
+    activities?: Activities[]
 
-    @ManyToMany(type => Perks,{nullable: true})
+    @ManyToMany(type => Perks,{nullable: true, cascade: true})
     @JoinTable()
-    perks: Perks[]
+    perks?: Perks[]
 
-    @ManyToMany(type => Speakers,{nullable: true})
+    @ManyToMany(type => Speakers,{nullable: true, cascade: true, eager: true})
     @JoinTable()
-    speakers: Speakers[]
+    speakers?: Speakers[]
 
 
 }
