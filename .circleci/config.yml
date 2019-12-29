@@ -12,6 +12,11 @@ jobs:
             name: install-dependencies
             command: npm install
  
+      # - run:
+      #       name: run-tests
+      #       command: npm test
+
+       
       - run:
-            name: run-tests
-            command: npm test
+            name: run-build
+            command: npm run build
