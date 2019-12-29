@@ -15,3 +15,7 @@ jobs:
       - run:
             name: run-tests
             command: npm test
+    
+      - run:
+            name: run-build
+            command: npm run build
