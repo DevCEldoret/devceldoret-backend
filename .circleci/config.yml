@@ -15,6 +15,9 @@ jobs:
       - run:
             name: run-tests
             command: npm test
+      - run:
+           name: create-env
+           command: sh .circleci/scripts/create-env.sh
     
       - run:
             name: run-build
