@@ -18,10 +18,10 @@ export default class speakers {
     @Column({nullable: true})
     bio?: string;
 
-    @Column()
+    @Column({nullable: true})
     job_title?: string;
 
-    @Column({type: 'bytea'})
+    @Column({type: 'bytea', nullable: true})
     image?: string
 
 }
