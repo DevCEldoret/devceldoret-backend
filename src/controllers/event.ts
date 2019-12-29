@@ -7,9 +7,13 @@ export async function getEvents(
   res: Response,
   next: NextFunction
 ) {
-  const eventRepository = getRepository(Event);
-  const events = await eventRepository.find();
-  res.status(200).send(events);
+  try {
+    const eventRepository = getRepository(Event);
+    const events = await eventRepository.find();
+    res.status(200).send(events);
+  } catch (err) {
+    next(err);
+  }
 }
 
 export async function getUpcomingEvents(
@@ -17,12 +21,16 @@ export async function getUpcomingEvents(
   res: Response,
   next: NextFunction
 ) {
-  const eventRepository = getRepository(Event);
-  const today = new Date();
-  const events = await eventRepository.find({
-    where: { start_datetime: MoreThanOrEqual(today) }
-  });
-  res.status(200).send(events);
+  try {
+    const eventRepository = getRepository(Event);
+    const today = new Date();
+    const events = await eventRepository.find({
+      where: { start_datetime: MoreThanOrEqual(today) }
+    });
+    res.status(200).send(events);
+  } catch (err) {
+    next(err);
+  }
 }
 
 export async function getPastEvents(
@@ -30,10 +38,16 @@ export async function getPastEvents(
   res: Response,
   next: NextFunction
 ) {
-  const eventRepository = getRepository(Event);
-  const yesterday = (d => new Date(d.setDate(d.getDate() - 1)))(new Date());
-  const events = await eventRepository.find({where: { start_datetime: LessThanOrEqual(yesterday)}});
-  res.status(200).send(events);
+  try {
+    const eventRepository = getRepository(Event);
+    const yesterday = (d => new Date(d.setDate(d.getDate() - 1)))(new Date());
+    const events = await eventRepository.find({
+      where: { start_datetime: LessThanOrEqual(yesterday) }
+    });
+    res.status(200).send(events);
+  } catch (err) {
+    next(err);
+  }
 }
 
 export async function createEvent(
@@ -41,7 +55,11 @@ export async function createEvent(
   res: Response,
   next: NextFunction
 ) {
-  const eventRepository = getRepository(Event);
-  const newEvent = await eventRepository.save({..._req.body})
-  res.status(201).send(newEvent);
+  try {
+    const eventRepository = getRepository(Event);
+    const newEvent = await eventRepository.save({ ..._req.body });
+    res.status(201).send(newEvent);
+  } catch (err) {
+    next(err);
+  }
 }
