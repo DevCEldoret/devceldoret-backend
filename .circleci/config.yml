@@ -11,11 +11,12 @@ jobs:
       - run: 
             name: install-dependencies
             command: npm install
- 
+      - run:
+           name: create-env
+           command: sh .circleci/scripts/create-env.sh      
       - run:
             name: run-tests
-            command: npm test
-
+            command: npm test   
       - run:
             name: run-build
             command: npm run build
