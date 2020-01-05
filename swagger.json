@@ -20,7 +20,7 @@
   "paths": {
     "/events": {
       "get": {
-        "description": "get all events",
+        "description": "Create an events",
         "produces": ["application/json"],
         "responses": {
           "200": {

@@ -20,3 +20,25 @@ jobs:
       - run:
             name: run-build
             command: npm run build
+  deploy:
+    machine:
+       image: ubuntu-1604:201903-01
+    steps:
+      - checkout
+      - run:
+          name: Deploy To Digital Ocean
+          command: |
+            scp .env $SSH_USER@$SSH_HOST:/tmp && \
+            ssh -o "StrictHostKeyChecking no" $SSH_USER@$SSH_HOST "cd ~/webapp; git pull origin development; npm install; cp /tmp/.env .; forever start server.js"
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          # filters:
+          #   branches:
+          #     only: development
