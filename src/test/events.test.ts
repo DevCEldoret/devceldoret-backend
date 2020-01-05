@@ -6,9 +6,9 @@ const baseUrl = '/api/v1/';
 
 describe("Events", () => {
     it('GET /events', async () => {
-        const response = await request(app)
+        const readyApp = await app();
+        const response = await request(readyApp)
         .get(`${baseUrl}/events`);
-        
         const [data] = response.body;
         console.log(data);
         expect(data.id).to.be.a("number");

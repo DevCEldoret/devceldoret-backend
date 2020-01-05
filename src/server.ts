@@ -4,7 +4,7 @@ import bodyParser from "body-parser";
 import routes from "./routes";
 import "reflect-metadata";
 import errorHandler from "./utils/error-handler";
-import connection from "./connection";
+import { createConnection, getConnection } from "typeorm";
 
 const app = express();
 const cors = require('cors');
@@ -27,11 +27,18 @@ app.use(errorHandler);
 
 app.set("port", process.env.PORT || "3000");
 
-connection.then((connection) => {
-  app.listen(process.env.PORT || "3000", () => {
-    console.log("app is running on port ", process.env.PORT || "3000");
-  });
+app.listen(process.env.PORT || "3000", () => {
+  console.log("app is running on port ", process.env.PORT || "3000");
 });
 
+init();
 
-export default app;
+export default async function init() {
+  let connection;
+  try {
+    connection =  await createConnection();
+  } catch(e) {
+    connection = getConnection();
+  }
+  return app;
+};
