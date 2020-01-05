@@ -1,10 +1,9 @@
-require('custom-env').env()
 import express from "express";
 import bodyParser from "body-parser";
-import routes from "./routes";
 import "reflect-metadata";
-import errorHandler from "./Utils/error-handler";
 import { createConnection, getConnection } from "typeorm";
+import routes from "./routes";
+import errorHandler from "./Utils/error-handler";
 
 const app = express();
 const cors = require('cors');
