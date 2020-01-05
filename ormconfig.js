@@ -1,5 +1,4 @@
-const path = __dirname+ "/src/config/.env";
-const config = require('dotenv-safe').config({path}).required;
+const config = require('dotenv-safe').config().required;
 
 
 module.exports = {
