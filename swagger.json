@@ -1,0 +1,154 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Developer Circles Eldoret Backend API",
+    "description": "A REST API to communicate with the frontend",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "servers": [
+    {
+      "url": "http://localhost:3000/api/v1/",
+      "description": "Local Dev Server"
+    }
+  ],
+  "paths": {
+    "/events": {
+      "get": {
+        "description": "get all events",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "event"
+          }
+        }
+      },
+      "post": {
+        "description": "get all events",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "event",
+            "description": "The event to create.",
+            "schema": {
+              "type": "object",
+              "required": [
+                "name",
+                "start_datetime",
+                "end_datetime",
+                "location"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "start_datetime": {
+                  "type": "date"
+                },
+                "end_datetime": {
+                  "type": "date"
+                },
+                "location": {
+                  "type": "Location"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "speakers": {
+                  "type": "array"
+                },
+                "activities": {
+                  "type": "array"
+                },
+                "perks": {
+                  "type": "array"
+                }
+              },
+              "example": {
+                "name": "Hackathon Break",
+                "start_datetime": "2019-12-10",
+                "end_datetime": "2019-12-11",
+                "description": "Dummy Description",
+                "location": {
+                  "venue": "Sirikwa Hotel",
+                  "city": "Eldoret",
+                  "country": "Kenya",
+                  "street": "Oloo St.",
+                  "id": 1
+                },
+                "speakers": [
+                  {
+                    "first_name": "Jane",
+                    "last_name": "Doe",
+                    "gender": "F",
+                    "bio": "Cool Software Dev",
+                    "job_title": "Software Developer"
+                  },
+                  {
+                    "id": 3
+                  }
+                ],
+                "activities": [
+                  {
+                    "type": "Coding"
+                  },
+                  {
+                    "id": 2
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/events/upcoming": {
+      "get": {
+        "description": "get all upcoming events",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "event"
+          }
+        }
+      }
+    },
+    "/events/past": {
+      "get": {
+        "description": "get all past events",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "event"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Location": {
+        "type": "object",
+        "properties": {
+          "id": "integer",
+          "venue": "string",
+          "city": "string",
+          "country": "string",
+          "street": "string"
+        }
+      }
+    }
+  },
+  "tags": []
+}

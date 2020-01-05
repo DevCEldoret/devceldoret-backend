@@ -3,6 +3,8 @@ import express from "express";
 import bodyParser from "body-parser";
 import routes from "./routes";
 import "reflect-metadata";
+import * as swaggerDocument from "../swagger.json";
+import swaggerUi from 'swagger-ui-express';
 
 const app = express();
 const cors = require('cors');
@@ -16,6 +18,7 @@ app.get("/", (request, response) => {
 
 // routes
 app.use("/api/v1", routes);
+app.use("/api/v1/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // CORS
 app.use(cors());
