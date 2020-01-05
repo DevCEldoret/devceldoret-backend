@@ -1,0 +1,55 @@
+[
+  {
+    "name": "development",
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "admin",
+    "password": "admin123",
+    "database": "devc",
+    "synchronize": true,
+    "migrationsRun": true,
+    "logging": true,
+    "cache": {
+      "type": "redis",
+      "duration": 30000,
+      "options": {
+        "host": "localhost",
+        "port": 6379
+      }
+    },
+    "entities": ["dist/entity/*.js"],
+    "migrations": ["dist/migration/*.js"],
+    "cli": {
+      "entitiesDir": "src/entity",
+      "migrationsDir": "src/migration"
+    }
+  },
+  {
+    "name": "test",
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "admin",
+    "password": "admin123",
+    "database": "devc_test",
+    "synchronize": true,
+    "logging": false,
+    "migrationsRun": true,
+    "autoSchemaSync": true,
+    "cache": {
+      "type": "redis",
+      "duration": 30000,
+      "options": {
+        "host": "localhost",
+        "port": 6379
+      }
+    },
+    "entities": ["dist/entity/*.js"],
+    "migrations": ["dist/migration/*.js"],
+    "cli": {
+      "entitiesDir": "src/entity",
+      "migrationsDir": "src/migration"
+    }
+  }
+]

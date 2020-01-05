@@ -1,7 +1,0 @@
-{
-    "watch": "src/**/*.ts",
-    "execMap": {
-      "ts": "ts-node"
-    },
-    "exec": "ts-node -r tsconfig-paths/register --cacheDirectory tmp/tscache src/server.ts"
-  }

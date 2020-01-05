@@ -4,10 +4,29 @@
   "description": "This repo serves as the backend for the Developer Circles Eldoret Community website.",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon --exec \"ts-node\" ./src/server.ts",
-    "test": "nyc mocha -r ts-node/register --exit ./src/test/*.test.ts",
+    "start": "nodemon --exec ts-node src/server.ts",
+    "test": "export NODE_ENV=test && nyc mocha --opts src/test/mocha.opts",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "build": "tsc --build tsconfig.json"
+    "build": "tsc"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.ts",
+      "src/**/*.tsx"
+    ],
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "sourceMap": true,
+    "instrument": true
   },
   "repository": {
     "type": "git",
@@ -17,15 +36,16 @@
   "author": "Developer Circles Community",
   "license": "ISC",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/DevCEldoret/devceldoret-backend/issues"
   },
   "homepage": "",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
-    "dotenv-safe": "^8.2.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "pg": "^7.15.1",
+    "redis": "^2.8.0",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.22"
   },
@@ -40,7 +60,6 @@
     "@typescript-eslint/parser": "^2.11.0",
     "chai": "^4.2.0",
     "coveralls": "^3.0.7",
-    "custom-env": "^1.0.2",
     "eslint": "^6.6.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.19.1",
