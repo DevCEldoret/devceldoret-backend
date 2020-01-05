@@ -3,7 +3,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import routes from "./routes";
 import "reflect-metadata";
-import errorHandler from "./utils/error-handler";
+import errorHandler from "./Utils/error-handler";
 import { createConnection, getConnection } from "typeorm";
 
 const app = express();
