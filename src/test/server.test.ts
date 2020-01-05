@@ -7,15 +7,14 @@ import app from "../server";
 describe("server", () => {
   // gets json response
   describe("GET /", () => {
-    it("responds with json", done => {
-      request(app)
+    it("responds with json", async () => {
+      const readyApp = await app();
+      request(readyApp)
         .get("/")
         .set("Accept", "application/json")
         .expect("Content-Type", /json/)
         .end((err, res) => {
           expect(res.status).to.equal(200);
-          if (err) return done(err);
-          done();
         });
     });
   });
