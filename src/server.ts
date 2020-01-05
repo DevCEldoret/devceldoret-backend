@@ -26,6 +26,10 @@ app.use(errorHandler);
 
 app.set("port", process.env.PORT || "3000");
 
+app.listen(process.env.PORT || "3000", () => {
+  console.log("app is running on port ", process.env.PORT || "3000");
+});
+
 init();
 
 export default async function init() {
@@ -33,11 +37,8 @@ export default async function init() {
   try {
     connection =  await createConnection();
   } catch(e) {
-    throw e;
+    console.error(`The following error was caught: ${e.message}`);
     connection = getConnection();
   }
-  app.listen(process.env.PORT || "3000", () => {
-    console.log("app is running on port ", process.env.PORT || "3000");
-  });
   return app;
 };
