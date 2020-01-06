@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon --exec \"ts-node\" ./src/server.ts",
-    "test": "nyc mocha -r ts-node/register --exit ./src/test/*.test.ts",
+    "test": "nyc mocha -r ts-node/register --exit ./src/test/*.test.ts --config .mocharc.json",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "build": "tsc --build tsconfig.json"
   },
@@ -40,7 +40,6 @@
     "@typescript-eslint/parser": "^2.11.0",
     "chai": "^4.2.0",
     "coveralls": "^3.0.7",
-    "custom-env": "^1.0.2",
     "eslint": "^6.6.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.19.1",

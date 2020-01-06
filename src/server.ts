@@ -1,8 +1,9 @@
-require('custom-env').env()
 import express from "express";
 import bodyParser from "body-parser";
-import routes from "./routes";
 import "reflect-metadata";
+import { createConnection, getConnection } from "typeorm";
+import routes from "./routes";
+import errorHandler from "./Utils/error-handler";
 
 const app = express();
 const cors = require('cors');
@@ -20,9 +21,24 @@ app.use("/api/v1", routes);
 // CORS
 app.use(cors());
 
+// error handler
+app.use(errorHandler);
+
 app.set("port", process.env.PORT || "3000");
+
 app.listen(process.env.PORT || "3000", () => {
   console.log("app is running on port ", process.env.PORT || "3000");
 });
 
-export default app;
+init();
+
+export default async function init() {
+  let connection;
+  try {
+    connection =  await createConnection();
+  } catch(e) {
+    console.error(`The following error was caught: ${e.message}`);
+    connection = getConnection();
+  }
+  return app;
+};

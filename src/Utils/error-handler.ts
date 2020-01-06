@@ -1,10 +1,9 @@
-class ErrorHandler extends Error {
-  status: number;
-    constructor(message:string, status:number) {
-      super(message);
-      this.status = status;
-    }
-  }
-  
-  export default ErrorHandler;
-  
+import { Response, NextFunction, Request } from "express";
+
+export default function errorHandler(err: Error, req: Request, res: Response, next: NextFunction) {
+  const { message } = err;
+  res.status(500).json({
+    "error": message
+  });
+  next();
+};
