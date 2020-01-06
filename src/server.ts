@@ -1,9 +1,14 @@
 import express from "express";
 import bodyParser from "body-parser";
 import "reflect-metadata";
+<<<<<<< Updated upstream
 import { createConnection, getConnection } from "typeorm";
 import routes from "./routes";
 import errorHandler from "./Utils/error-handler";
+=======
+import errorHandler from "./Utils/error-handler";
+import connection from "./connection";
+>>>>>>> Stashed changes
 
 const app = express();
 const cors = require('cors');
