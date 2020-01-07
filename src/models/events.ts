@@ -13,54 +13,51 @@ import Perks from "./perks";
 import Speakers from "./speakers";
 
 @Entity()
-export class Event {
-  @PrimaryGeneratedColumn()
-  id: number;
+export default class events {
+ 
+    @PrimaryGeneratedColumn()
+    id: number;
+ 
+    @Column()
+    name: string;
+ 
+    @Column({nullable: true})
+    description: string;
+ 
+    @ManyToOne(type => Locations, location => location.id, { cascade: true, eager: true })
+    location: number;
 
-  @Column()
-  name: string;
+    @Index()
+    @Column({type: 'timestamp'})
+    start_datetime: Date
 
-  @Column({ nullable: true })
-  description: string;
+    @Index()
+    @Column({type: 'timestamp'})
+    end_datetime: Date
 
-  @ManyToOne(
-    type => Locations,
-    location => location.id,
-    { cascade: ["insert", "update"] }
-  )
-  location: number;
+    @Column({nullable: true})
+    attendees?: number
 
-  @Index()
-  @Column({ type: "timestamp" })
-  start_datetime: Date;
+    @Column({nullable: true})
+    female_attendees?: number
 
-  @Index()
-  @Column({ type: "timestamp" })
-  end_datetime: Date;
+    @Column({nullable: true})
+    media_link?: string
 
-  @Column({ nullable: true })
-  attendees: number;
+    @Column({nullable: true})
+    rsvp_link: string
 
-  @Column({ nullable: true })
-  female_attendees: number;
+    @ManyToMany(type => Activities,{nullable:true, cascade: true})
+    @JoinTable()
+    activities?: Activities[]
 
-  @Column({ nullable: true })
-  media_link: string;
+    @ManyToMany(type => Perks,{nullable: true, cascade: true})
+    @JoinTable()
+    perks?: Perks[]
 
-  @Column({ nullable: true })
-  rsvp_link: string;
+    @ManyToMany(type => Speakers,{nullable: true, cascade: true, eager: true})
+    @JoinTable()
+    speakers?: Speakers[]
 
-  @ManyToMany(type => Activities, { nullable: true })
-  @JoinTable()
-  activities: Activities[];
 
-  @ManyToMany(type => Perks, { nullable: true })
-  @JoinTable()
-  perks: Perks[];
-
-  @ManyToMany(type => Speakers, { nullable: true })
-  @JoinTable()
-  speakers: Speakers[];
 }
-
-export default Event;

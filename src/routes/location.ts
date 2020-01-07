@@ -13,3 +13,4 @@ export class locationRoutes {
     app.route(`${baseUrl}locations/:id`).get(getLocation);
   }
 }
+

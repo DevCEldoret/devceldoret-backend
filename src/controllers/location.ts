@@ -3,6 +3,7 @@ import Location from "../models/locations";
 import { getRepository } from "typeorm";
 import prompt from "../Utils/apiResponses";
 
+
 export async function getLocations(
   _req: Request,
   res: Response,
@@ -14,6 +15,7 @@ export async function getLocations(
     prompt.successWithPayload(res, 200, "Success", locations);
   } catch (error) {
     next(prompt.errorMessage(res, 400, error.message));
+
   }
 }
 

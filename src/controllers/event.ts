@@ -14,6 +14,7 @@ export async function getEvents(
     prompt.successWithPayload(res, 200, "Success", events);
   } catch (error) {
     next(prompt.errorMessage(res, 400, error.message));
+
   }
 }
 
@@ -31,6 +32,7 @@ export async function getUpcomingEvents(
     prompt.successWithPayload(res, 200, "Success", events);
   } catch (error) {
     next(prompt.errorMessage(res, 400, error.message));
+
   }
 }
 
@@ -48,15 +50,19 @@ export async function getPastEvents(
     prompt.successWithPayload(res, 200, "Success", events);
   } catch (error) {
     next(prompt.errorMessage(res, 400, error.message));
+
   }
 }
 
 export async function createEvent(
+
   req: Request,
+
   res: Response,
   next: NextFunction
 ) {
   try {
+
     const {
       name,
       description,
