@@ -1,4 +1,4 @@
-import Event from "../models/events";
+import Event from "../models/eventModel";
 import { Request, Response, NextFunction } from "express";
 import { getRepository, MoreThanOrEqual, LessThanOrEqual } from "typeorm";
 import prompt from "../Utils/apiResponses";

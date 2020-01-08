@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction } from "express";
-import Location from "../models/locations";
+import Location from "../models/locationModel";
 import { getRepository } from "typeorm";
 import prompt from "../Utils/apiResponses";
+
 
 export async function getLocations(
   _req: Request,
@@ -14,6 +15,7 @@ export async function getLocations(
     prompt.successWithPayload(res, 200, "Success", locations);
   } catch (error) {
     next(prompt.errorMessage(res, 400, error.message));
+
   }
 }
 

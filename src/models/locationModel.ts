@@ -16,4 +16,5 @@ export default class Location {
 
   @Column()
   country: string;
+
 }

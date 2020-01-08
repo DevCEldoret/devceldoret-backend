@@ -3,7 +3,7 @@ import {
   getUpcomingEvents,
   getPastEvents,
   createEvent
-} from "../controllers/event";
+} from "../controllers/eventController";
 
 import { Router } from "express";
 

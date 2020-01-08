@@ -2,7 +2,7 @@ import {
   getLocations,
   createLocation,
   getLocation
-} from "../controllers/location";
+} from "../controllers/locationController";
 
 import { Router } from "express";
 const locationRouter = Router();
