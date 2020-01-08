@@ -23,15 +23,8 @@ export async function createLocation(
   next: NextFunction
 ) {
   try {
-    const { venue, city, street, country } = req.body;
-    const location = new Location();
-    location.venue = venue;
-    location.country = country;
-    location.city = city;
-    location.street = street;
-
     const locationRepository = getRepository(Location);
-    let newLocation = await locationRepository.save(location);
+    let newLocation = await locationRepository.save({...req.body});
     if (newLocation) {
       prompt.successWithPayload(res, 201, "Created", newLocation);
     }

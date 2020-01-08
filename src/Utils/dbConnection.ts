@@ -27,5 +27,7 @@ export const createConn = async () => {
     } else {
       return createConnection();
     }
-  } catch (error) {}
+  } catch (error) {
+    console.log(`Error creating a connection to the database: ${error}`);
+  }
 };

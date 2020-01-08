@@ -1,11 +1,11 @@
-import { app, request, expect, baseUrl } from "./testConfig";
+import { app, request, expect, BASE_URL } from "./testConfig";
 
 describe("Server", () => {
   describe("GET /", () => {
     it("should be running", async () => {
       try {
         let res = await request(app)
-          .get(`${baseUrl}`)
+          .get(`${BASE_URL}`)
           .set("Accept", "application/json");
 
         /** Tests */
@@ -19,7 +19,7 @@ describe("Server", () => {
     it("should respond with JSON data", async () => {
       try {
         let res = await request(app)
-          .get(`${baseUrl}`)
+          .get(`${BASE_URL}`)
           .set("Accept", "application/json");
 
         /** Tests */

@@ -1,7 +1,6 @@
 import { expect } from "chai";
 import request from "supertest";
 import app from "../server";
+import { BASE_URL } from '../Utils/constants';
 
-const baseUrl = "/api/v1/";
-
-export { app, request, expect, baseUrl };
+export { app, request, expect, BASE_URL };

@@ -1,4 +1,4 @@
-import { app, request, expect, baseUrl } from "./testConfig";
+import { app, request, expect, BASE_URL } from "./testConfig";
 import { testEvent, testLocation } from "../Utils/testHelpers";
 describe("Events", () => {
   describe("POST /api/v1/events", () => {
@@ -6,13 +6,13 @@ describe("Events", () => {
       try {
         /**create location */
         await request(app)
-          .post(`${baseUrl}locations`)
+          .post(`${BASE_URL}/locations`)
           .set("Accept", "application/json")
           .send(testLocation);
 
         /**create event */
         let { body } = await request(app)
-          .post(`${baseUrl}events`)
+          .post(`${BASE_URL}/events`)
           .set("Accept", "application/json")
           .send(testEvent);
 
@@ -26,7 +26,7 @@ describe("Events", () => {
     it("should create an event", async () => {
       try {
         let { body } = await request(app)
-          .get(`${baseUrl}events`)
+          .get(`${BASE_URL}/events`)
           .set("Accept", "application/json");
 
         /** Tests */

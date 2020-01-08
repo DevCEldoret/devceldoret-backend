@@ -57,25 +57,8 @@ export async function createEvent(
   next: NextFunction
 ) {
   try {
-    const {
-      name,
-      description,
-      location,
-      start_datetime,
-      end_datetime,
-      rsvp_link,
-      media_link
-    } = req.body;
-    const event = new Event();
-    event.name = name;
-    event.description = description;
-    event.start_datetime = start_datetime;
-    event.end_datetime = end_datetime;
-    event.rsvp_link = rsvp_link;
-    event.location = location;
-    event.media_link = media_link;
     const eventsRepository = getRepository(Event);
-    let newEvent = await eventsRepository.save(event);
+    let newEvent = await eventsRepository.save({ ...req.body });
     if (newEvent) {
       prompt.successWithPayload(res, 201, "Created", newEvent);
     }
