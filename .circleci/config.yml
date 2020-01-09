@@ -1,0 +1,22 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:latest 
+    
+    working_directory: ~/repo    
+    steps:
+      - checkout 
+
+      - run: 
+            name: install-dependencies
+            command: npm install
+      - run:
+           name: create-env
+           command: sh .circleci/scripts/create-env.sh      
+      - run:
+            name: run-tests
+            command: npm test   
+      - run:
+            name: run-build
+            command: npm run build
