@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon --exec \"ts-node\" ./src/server.ts",
-    "test": "export NODE_ENV=test && nyc mocha -r ts-node/register --exit ./src/test/*.test.ts --config .mocharc.json",
+    "test": "export NODE_ENV=test && nyc mocha -r ts-node/register --exit ./src/test/*Test.ts --config .mocharc.json",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "build": "tsc --build tsconfig.json"
   },
@@ -60,17 +60,6 @@
     "chai": "^4.2.0",
     "coveralls": "^3.0.7",
     "custom-env": "^1.0.2",
-<<<<<<< HEAD
-    "eslint": "^6.6.0",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.19.1",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-node": "^10.0.0",
-    "mocha": "^6.2.2",
-    "mocha-lcov-reporter": "^1.3.0",
-    "nodemon": "^1.19.4",
-    "nyc": "^14.1.1",
-=======
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-node": "^4.0.0",
@@ -82,7 +71,6 @@
     "mocha-lcov-reporter": "^1.3.0",
     "nodemon": "^1.19.4",
     "nyc": "^15.0.0",
->>>>>>> e09d540f317df183d82f54a073bac882e4bc154e
     "prettier": "^1.18.2",
     "supertest": "^4.0.2",
     "ts-node": "^8.5.4",

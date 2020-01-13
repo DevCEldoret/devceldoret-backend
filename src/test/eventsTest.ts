@@ -23,7 +23,7 @@ describe("Events", () => {
   });
 
   describe("GET /api/v1/events", () => {
-    it("should create an event", async () => {
+    it("should retrieve all events", async () => {
       try {
         let { body } = await request(app)
           .get(`${BASE_URL}/events`)

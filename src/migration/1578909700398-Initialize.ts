@@ -1,16 +1,17 @@
 import {MigrationInterface, QueryRunner} from "typeorm";
 
-export class Initialize1578482938987 implements MigrationInterface {
-    name = 'Initialize1578482938987'
+export class Initialize1578909700398 implements MigrationInterface {
+    name = 'Initialize1578909700398'
 
     public async up(queryRunner: QueryRunner): Promise<any> {
         await queryRunner.query(`CREATE TABLE "activities" ("id" SERIAL NOT NULL, "type" character varying NOT NULL, CONSTRAINT "UQ_704a5fe2080d400189b76938cd1" UNIQUE ("type"), CONSTRAINT "PK_7f4004429f731ffb9c88eb486a8" PRIMARY KEY ("id"))`, undefined);
         await queryRunner.query(`CREATE TABLE "location" ("id" SERIAL NOT NULL, "venue" character varying NOT NULL, "street" character varying NOT NULL, "city" character varying NOT NULL, "country" character varying NOT NULL, CONSTRAINT "PK_876d7bdba03c72251ec4c2dc827" PRIMARY KEY ("id"))`, undefined);
         await queryRunner.query(`CREATE TABLE "perks" ("id" SERIAL NOT NULL, "type" character varying NOT NULL, CONSTRAINT "UQ_451e535e90c45489610ae107e26" UNIQUE ("type"), CONSTRAINT "PK_7858d2e37891967413d2010a278" PRIMARY KEY ("id"))`, undefined);
-        await queryRunner.query(`CREATE TABLE "speakers" ("id" SERIAL NOT NULL, "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "gender" character varying(1) NOT NULL, "bio" character varying, "job_title" character varying NOT NULL, "image" bytea NOT NULL, CONSTRAINT "PK_b3818c94af77a0cf73403ecef14" PRIMARY KEY ("id"))`, undefined);
+        await queryRunner.query(`CREATE TABLE "speakers" ("id" SERIAL NOT NULL, "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "gender" character varying(1) NOT NULL, "bio" character varying, "job_title" character varying, "image" bytea, CONSTRAINT "PK_b3818c94af77a0cf73403ecef14" PRIMARY KEY ("id"))`, undefined);
         await queryRunner.query(`CREATE TABLE "event" ("id" SERIAL NOT NULL, "name" character varying NOT NULL, "description" character varying, "start_datetime" TIMESTAMP NOT NULL, "end_datetime" TIMESTAMP NOT NULL, "attendees" integer, "female_attendees" integer, "media_link" character varying, "rsvp_link" character varying, "locationId" integer, CONSTRAINT "PK_30c2f3bbaf6d34a55f8ae6e4614" PRIMARY KEY ("id"))`, undefined);
         await queryRunner.query(`CREATE INDEX "IDX_e0974ea88afa9fdc9e8cecf5fa" ON "event" ("start_datetime") `, undefined);
         await queryRunner.query(`CREATE INDEX "IDX_ffb1bbbe118df62ea77c37293c" ON "event" ("end_datetime") `, undefined);
+        await queryRunner.query(`CREATE TABLE "user" ("id" SERIAL NOT NULL, "firstName" character varying NOT NULL, "lastName" character varying NOT NULL, "country" character varying NOT NULL, "city" character varying NOT NULL, "email" character varying NOT NULL, "password" character varying NOT NULL, CONSTRAINT "PK_cace4a159ff9f2512dd42373760" PRIMARY KEY ("id"))`, undefined);
         await queryRunner.query(`CREATE TABLE "event_activities_activities" ("eventId" integer NOT NULL, "activitiesId" integer NOT NULL, CONSTRAINT "PK_b7c3b21e216fbf4080585f12e5a" PRIMARY KEY ("eventId", "activitiesId"))`, undefined);
         await queryRunner.query(`CREATE INDEX "IDX_236b381aff81645ffd174ff4ed" ON "event_activities_activities" ("eventId") `, undefined);
         await queryRunner.query(`CREATE INDEX "IDX_d720ae38b672ef5f6b5396062d" ON "event_activities_activities" ("activitiesId") `, undefined);
@@ -46,6 +47,7 @@ export class Initialize1578482938987 implements MigrationInterface {
         await queryRunner.query(`DROP INDEX "IDX_d720ae38b672ef5f6b5396062d"`, undefined);
         await queryRunner.query(`DROP INDEX "IDX_236b381aff81645ffd174ff4ed"`, undefined);
         await queryRunner.query(`DROP TABLE "event_activities_activities"`, undefined);
+        await queryRunner.query(`DROP TABLE "user"`, undefined);
         await queryRunner.query(`DROP INDEX "IDX_ffb1bbbe118df62ea77c37293c"`, undefined);
         await queryRunner.query(`DROP INDEX "IDX_e0974ea88afa9fdc9e8cecf5fa"`, undefined);
         await queryRunner.query(`DROP TABLE "event"`, undefined);
