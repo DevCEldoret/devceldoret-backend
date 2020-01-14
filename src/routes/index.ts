@@ -1,10 +1,9 @@
-import { Router } from "express";
-import  locationRoutes  from "./location";
-import eventRoutes from "./event";
+import { Response, Request, Router } from "express";
+import prompt from "../Utils/apiResponses";
 
-const router = Router();
+const homeRouter = Router();
+homeRouter.get("/", (req: Request, res: Response) => {
+  prompt.successMessage(res, 200, "Server successfully running");
+});
 
-router.use('/locations', locationRoutes);
-router.use('/events', eventRoutes);
-
-export default router;
+export { homeRouter };
