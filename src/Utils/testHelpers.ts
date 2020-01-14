@@ -36,7 +36,7 @@ export const testUser = {
   lastName: "Grisham",
   country: "Kenya",
   city: "Eldoret",
-  email: "grisham@admin.com",
+  email: "john@admin.com",
   password: "admin123"
 };
 
