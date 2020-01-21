@@ -1,5 +1,5 @@
 import { app, request, expect, BASE_URL } from "./testConfig";
-import { testEvent, testLocation } from "../Utils/testHelpers";
+import { testEvent, testLocation, testNullEvent } from "../Utils/testHelpers";
 describe("Events", () => {
   describe("POST /api/v1/events", () => {
     it("should create an event", async () => {
@@ -22,8 +22,18 @@ describe("Events", () => {
     });
   });
 
+  it("should not accept a null value", async () => {
+    try {
+      let { body } = await request(app)
+        .post(`${BASE_URL}/events`)
+        .send(testNullEvent);
+      /**Test */
+      expect(body).to.have.property("message", "No repository for 'Event' was found. Looks like this entity is not registered in current 'default' connection?")
+    } catch (error) {}
+  });
+
   describe("GET /api/v1/events", () => {
-    it("should create an event", async () => {
+    it("should retrieve all events", async () => {
       try {
         let { body } = await request(app)
           .get(`${BASE_URL}/events`)
