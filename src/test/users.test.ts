@@ -1,9 +1,14 @@
 import { app, request, expect, BASE_URL } from "./testConfig";
-import { testUser, testUserUpdate } from "../Utils/testHelpers";
+import { testUser, testUserUpdate, testRole } from "../Utils/testHelpers";
 describe("Users", () => {
   describe("POST /api/v1/users/register", () => {
     it("should create user", async () => {
       try {
+        /**create role */
+        await request(app)
+          .post(`${BASE_URL}/roles`)
+          .set("Accept", "application/json")
+          .send(testRole);
         /**create user */
         let { body } = await request(app)
           .post(`${BASE_URL}/users/register`)
@@ -45,8 +50,6 @@ describe("Users", () => {
         expect(body.status).to.eql(200);
         expect(body).to.have.property("firstName");
         expect(body).to.have.property("lastName");
-        expect(body).to.have.property("country");
-        expect(body).to.have.property("city");
         expect(body).to.have.property("email");
       } catch (error) {}
     });
@@ -63,8 +66,6 @@ describe("Users", () => {
         expect(body.status).to.eql(200);
         expect(body).to.have.property("firstName");
         expect(body).to.have.property("lastName");
-        expect(body).to.have.property("country");
-        expect(body).to.have.property("city");
         expect(body).to.have.property("email");
       } catch (error) {}
     });
@@ -80,8 +81,6 @@ describe("Users", () => {
         /** Tests */
         expect(body).to.have.property("firstName", testUserUpdate.firstName);
         expect(body).to.have.property("lastName", testUserUpdate.lastName);
-        expect(body).to.have.property("country", testUserUpdate.country);
-        expect(body).to.have.property("city", testUserUpdate.city);
         expect(body).to.have.property("email", testUserUpdate.email);
       } catch (error) {}
     });

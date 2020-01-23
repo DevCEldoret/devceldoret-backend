@@ -7,6 +7,7 @@ import { locationRouter } from "./routes/locationRoute";
 import { userRouter } from "./routes/usersRoute";
 import { homeRouter } from "./routes/index";
 import { eventRouter } from "./routes/eventRoute";
+import { roleRouter } from "./routes/rolesRoute";
 import { BASE_URL } from "./Utils/constants";
 
 class App {
@@ -28,6 +29,7 @@ class App {
     this.app.use(BASE_URL, eventRouter);
     this.app.use(BASE_URL, locationRouter);
     this.app.use(BASE_URL, userRouter);
+    this.app.use(BASE_URL, roleRouter);
     this.app.use(cors());
   }
 }
