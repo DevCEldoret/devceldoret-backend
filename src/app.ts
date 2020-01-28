@@ -1,5 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
 import cors from "cors";
 import { createConn } from "./Utils/dbConnection";
 import { locationRouter } from "./routes/locationRoute";
@@ -21,6 +22,7 @@ class App {
 
   private config(): void {
     this.app.use(bodyParser.json());
+    this.app.use(cookieParser());
     this.app.use(bodyParser.urlencoded({ extended: false }));
     this.app.use(BASE_URL, homeRouter);
     this.app.use(BASE_URL, eventRouter);
