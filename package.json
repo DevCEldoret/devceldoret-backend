@@ -55,7 +55,7 @@
     "@types/node": "^12.12.22",
     "@types/pg": "^7.11.2",
     "@types/supertest": "^2.0.8",
-    "@typescript-eslint/eslint-plugin": "^2.11.0",
+    "@typescript-eslint/eslint-plugin": "^2.18.0",
     "@typescript-eslint/parser": "^2.11.0",
     "chai": "^4.2.0",
     "coveralls": "^3.0.7",
