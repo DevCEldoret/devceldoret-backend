@@ -1,7 +1,7 @@
 import {MigrationInterface, QueryRunner} from "typeorm";
 
-export class Initialize1578909700398 implements MigrationInterface {
-    name = 'Initialize1578909700398'
+export class Initialize1579792064714 implements MigrationInterface {
+    name = 'Initialize1579792064714'
 
     public async up(queryRunner: QueryRunner): Promise<any> {
         await queryRunner.query(`CREATE TABLE "activities" ("id" SERIAL NOT NULL, "type" character varying NOT NULL, CONSTRAINT "UQ_704a5fe2080d400189b76938cd1" UNIQUE ("type"), CONSTRAINT "PK_7f4004429f731ffb9c88eb486a8" PRIMARY KEY ("id"))`, undefined);
@@ -11,7 +11,8 @@ export class Initialize1578909700398 implements MigrationInterface {
         await queryRunner.query(`CREATE TABLE "event" ("id" SERIAL NOT NULL, "name" character varying NOT NULL, "description" character varying, "start_datetime" TIMESTAMP NOT NULL, "end_datetime" TIMESTAMP NOT NULL, "attendees" integer, "female_attendees" integer, "media_link" character varying, "rsvp_link" character varying, "locationId" integer, CONSTRAINT "PK_30c2f3bbaf6d34a55f8ae6e4614" PRIMARY KEY ("id"))`, undefined);
         await queryRunner.query(`CREATE INDEX "IDX_e0974ea88afa9fdc9e8cecf5fa" ON "event" ("start_datetime") `, undefined);
         await queryRunner.query(`CREATE INDEX "IDX_ffb1bbbe118df62ea77c37293c" ON "event" ("end_datetime") `, undefined);
-        await queryRunner.query(`CREATE TABLE "user" ("id" SERIAL NOT NULL, "firstName" character varying NOT NULL, "lastName" character varying NOT NULL, "country" character varying NOT NULL, "city" character varying NOT NULL, "email" character varying NOT NULL, "password" character varying NOT NULL, CONSTRAINT "PK_cace4a159ff9f2512dd42373760" PRIMARY KEY ("id"))`, undefined);
+        await queryRunner.query(`CREATE TABLE "user" ("id" SERIAL NOT NULL, "firstName" character varying NOT NULL, "lastName" character varying NOT NULL, "email" character varying NOT NULL, "password" character varying NOT NULL, "roleId" integer, CONSTRAINT "PK_cace4a159ff9f2512dd42373760" PRIMARY KEY ("id"))`, undefined);
+        await queryRunner.query(`CREATE TABLE "role" ("id" SERIAL NOT NULL, "roleName" character varying NOT NULL, CONSTRAINT "PK_b36bcfe02fc8de3c57a8b2391c2" PRIMARY KEY ("id"))`, undefined);
         await queryRunner.query(`CREATE TABLE "event_activities_activities" ("eventId" integer NOT NULL, "activitiesId" integer NOT NULL, CONSTRAINT "PK_b7c3b21e216fbf4080585f12e5a" PRIMARY KEY ("eventId", "activitiesId"))`, undefined);
         await queryRunner.query(`CREATE INDEX "IDX_236b381aff81645ffd174ff4ed" ON "event_activities_activities" ("eventId") `, undefined);
         await queryRunner.query(`CREATE INDEX "IDX_d720ae38b672ef5f6b5396062d" ON "event_activities_activities" ("activitiesId") `, undefined);
@@ -22,6 +23,7 @@ export class Initialize1578909700398 implements MigrationInterface {
         await queryRunner.query(`CREATE INDEX "IDX_1de73d2affec4507638fa1e925" ON "event_speakers_speakers" ("eventId") `, undefined);
         await queryRunner.query(`CREATE INDEX "IDX_204523771f16bf46c1623f44f9" ON "event_speakers_speakers" ("speakersId") `, undefined);
         await queryRunner.query(`ALTER TABLE "event" ADD CONSTRAINT "FK_3abacb54776ac9da25ca49c609f" FOREIGN KEY ("locationId") REFERENCES "location"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`, undefined);
+        await queryRunner.query(`ALTER TABLE "user" ADD CONSTRAINT "FK_c28e52f758e7bbc53828db92194" FOREIGN KEY ("roleId") REFERENCES "role"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`, undefined);
         await queryRunner.query(`ALTER TABLE "event_activities_activities" ADD CONSTRAINT "FK_236b381aff81645ffd174ff4edf" FOREIGN KEY ("eventId") REFERENCES "event"("id") ON DELETE CASCADE ON UPDATE NO ACTION`, undefined);
         await queryRunner.query(`ALTER TABLE "event_activities_activities" ADD CONSTRAINT "FK_d720ae38b672ef5f6b5396062d8" FOREIGN KEY ("activitiesId") REFERENCES "activities"("id") ON DELETE CASCADE ON UPDATE NO ACTION`, undefined);
         await queryRunner.query(`ALTER TABLE "event_perks_perks" ADD CONSTRAINT "FK_7fe6b9edcb86334d0bb6c55f89b" FOREIGN KEY ("eventId") REFERENCES "event"("id") ON DELETE CASCADE ON UPDATE NO ACTION`, undefined);
@@ -37,6 +39,7 @@ export class Initialize1578909700398 implements MigrationInterface {
         await queryRunner.query(`ALTER TABLE "event_perks_perks" DROP CONSTRAINT "FK_7fe6b9edcb86334d0bb6c55f89b"`, undefined);
         await queryRunner.query(`ALTER TABLE "event_activities_activities" DROP CONSTRAINT "FK_d720ae38b672ef5f6b5396062d8"`, undefined);
         await queryRunner.query(`ALTER TABLE "event_activities_activities" DROP CONSTRAINT "FK_236b381aff81645ffd174ff4edf"`, undefined);
+        await queryRunner.query(`ALTER TABLE "user" DROP CONSTRAINT "FK_c28e52f758e7bbc53828db92194"`, undefined);
         await queryRunner.query(`ALTER TABLE "event" DROP CONSTRAINT "FK_3abacb54776ac9da25ca49c609f"`, undefined);
         await queryRunner.query(`DROP INDEX "IDX_204523771f16bf46c1623f44f9"`, undefined);
         await queryRunner.query(`DROP INDEX "IDX_1de73d2affec4507638fa1e925"`, undefined);
@@ -47,6 +50,7 @@ export class Initialize1578909700398 implements MigrationInterface {
         await queryRunner.query(`DROP INDEX "IDX_d720ae38b672ef5f6b5396062d"`, undefined);
         await queryRunner.query(`DROP INDEX "IDX_236b381aff81645ffd174ff4ed"`, undefined);
         await queryRunner.query(`DROP TABLE "event_activities_activities"`, undefined);
+        await queryRunner.query(`DROP TABLE "role"`, undefined);
         await queryRunner.query(`DROP TABLE "user"`, undefined);
         await queryRunner.query(`DROP INDEX "IDX_ffb1bbbe118df62ea77c37293c"`, undefined);
         await queryRunner.query(`DROP INDEX "IDX_e0974ea88afa9fdc9e8cecf5fa"`, undefined);

@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import Role from "./roleModel";
 @Entity()
 class User {
   @PrimaryGeneratedColumn()
@@ -11,16 +12,17 @@ class User {
   public lastName: string;
 
   @Column()
-  public country: string;
-
-  @Column()
-  public city: string;
-
-  @Column()
   public email: string;
 
   @Column()
   public password: string;
+  
+  @ManyToOne(
+    type => Role,
+    role => role.id,
+    { cascade: true, eager: true }
+  )
+  role: number;
 }
 
 export default User;

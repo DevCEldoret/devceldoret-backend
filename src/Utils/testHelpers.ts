@@ -1,50 +1,56 @@
 export const testEvent = {
-  name: "Bootcamp",
-  description: "Only the strong surive",
+  name: "testEvent",
+  description: "testDescription",
   location: 1,
   start_datetime: "2020-02-25 14:00:00 -0400",
   end_datetime: "2020-02-25 20:00:00 -0400",
   rsvp_link: "test.test.test/rsvp",
-  media_link: "devc/seminars"
+  media_link: "test/testLink"
 };
 export const testNullEvent = {
   //null name
-  description: "A great way to get you started",
+  description: "testDescription",
   location: 1,
   start_datetime: "2020-02-25 14:00:00 -0400",
   end_datetime: "2020-02-25 20:00:00 -0400",
   rsvp_link: "test.test.test/rsvp",
-  media_link: "devc/seminars"
+  media_link: "test/testLink"
 };
 
 export const testLocation = {
-  venue: "Foxies",
-  country: "Kenya",
-  city: "Nairobi",
-  street: "Woodley Grove"
+  venue: "testVenue",
+  country: "testCountry",
+  city: "testCity",
+  street: "testStreet"
+};
+
+export const testRole = {
+  roleName: "testRole"
+};
+
+export const testNullRole = {
+  //null roleName value
 };
 
 export const testNullLocation = {
   //null venue
-  country: "Kenya",
-  city: "Nairobi",
-  street: "Woodley Grove"
+  country: "testCountry",
+  city: "testCity",
+  street: "testStreet"
 };
 
 export const testUser = {
-  firstName: "John",
-  lastName: "Grisham",
-  country: "Kenya",
-  city: "Eldoret",
-  email: "john@admin.com",
-  password: "admin123"
+  firstName: "testFirstName",
+  lastName: "testLastName",
+  email: "test@test.test",
+  password: "test123",
+  role: 1
 };
 
 export const testUserUpdate = {
-  firstName: "Jane",
-  lastName: "Doe",
-  country: "Liberia",
-  city: "Monrovia",
-  email: "jane@admin.com",
-  password: "admin123"
+  firstName: "testFirstNameUpdate",
+  lastName: "testLastNameUpdate",
+  email: "testUpdate@test.test",
+  password: "testUpdate123",
+  role: 1
 };
