@@ -11,7 +11,7 @@ This repo serves as the backend for the Developer Circles Eldoret Community webs
 2. Clone the project by opening your terminal and running:
 
 ```shell
-git clone https://https://github.com/DevCEldoret/devceldoret-backend.git
+git clone https://github.com/DevCEldoret/devceldoret-backend.git
 ```
 
 3. `cd` into the newly created directory then run
