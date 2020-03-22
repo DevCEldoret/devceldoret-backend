@@ -13,18 +13,6 @@ class CreateUserDto {
   })
   public lastName: string;
 
-  @IsString()
-  @IsNotEmpty({
-    message: "Country is required"
-  })
-  public country: string;
-
-  @IsString()
-  @IsNotEmpty({
-    message: "City is required"
-  })
-  public city: string;
-
   @IsEmail(undefined, {
     message: "Email address must be a valid email address"
   })
