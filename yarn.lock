@@ -117,10 +117,10 @@
     "@types/connect" "*"
     "@types/node" "*"
 
-"@types/chai@^4.2.7":
-  version "4.2.7"
-  resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.2.7.tgz#1c8c25cbf6e59ffa7d6b9652c78e547d9a41692d"
-  integrity sha512-luq8meHGYwvky0O7u0eQZdA7B4Wd9owUCqvbw2m3XCrCU8mplYOujMBbvyS547AxJkC+pGnd0Cm15eNxEUNU8g==
+"@types/chai@^4.2.12":
+  version "4.2.12"
+  resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.2.12.tgz#6160ae454cd89dae05adc3bb97997f488b608201"
+  integrity sha512-aN5IAC8QNtSUdQzxu7lGBgYAOuU1tmRU4c9dIq5OKGf/SBVjXo+ffM2wEjudAWbgpOhy60nLoAGH1xm8fpCKFQ==
 
 "@types/color-name@^1.1.1":
   version "1.1.1"
