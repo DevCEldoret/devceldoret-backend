@@ -15,6 +15,14 @@ export async function register(
 ) {
   try {
     const data = req.body;
+    const userExists = await getRepository(User).findOne({
+      email: req.body.email
+    });
+    if (userExists) {
+      res
+      .status(409)
+      .send({ status: 409, message: "A user with that email already exists"})
+    }
     const passwordHash = await bcrypt.hash(data.password, 10);
     const user = await getRepository(User).create({
       ...data,
