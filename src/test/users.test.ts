@@ -1,7 +1,20 @@
 import { app, request, expect, BASE_URL } from "./testConfig";
-import { testUser, testUserUpdate, testRole } from "../Utils/testHelpers";
+import { testUser, testUserUpdate, testRole, existingUser } from "../Utils/testHelpers";
 describe("Users", () => {
   describe("POST /api/v1/users/register", () => {
+    it("should not create existing user", async () => {
+      try {
+        let { body } = await request(app)
+          .post(`${BASE_URL}/users/register`)
+          .set("Accept", "application/json")
+          .send(testUser);
+          if(testUser.email === existingUser.email){
+            /** Check for existing user*/
+            expect(body.status).to.eql(409);
+            expect(body).to.have.property("message", "A user with that email already exists");
+          }
+      } catch (error) {}
+    });
     it("should create user", async () => {
       try {
         /**create role */
