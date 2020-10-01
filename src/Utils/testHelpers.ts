@@ -54,3 +54,11 @@ export const testUserUpdate = {
   password: "testUpdate123",
   role: 1
 };
+
+export const existingUser = {
+  firstName: "testFirstName",
+  lastName: "testLastName",
+  email: "test@test.test",
+  password: "test123456",
+  role: 1
+};
