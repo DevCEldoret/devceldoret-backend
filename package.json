@@ -46,7 +46,7 @@
     "express": "^4.17.1",
     "pg": "^8.3.3",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.2.26"
+    "typeorm": "^0.2.36"
   },
   "devDependencies": {
     "@types/chai": "^4.2.12",
